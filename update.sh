@@ -59,6 +59,36 @@ reset_feeds_conf() {
     fi
 }
 
+
+
+
+
+aadiy() {
+# [ -e $BASE_PATH/files ] && 
+mv $BASE_PATH/files $BUILD_DIR/files
+# 设置执行权限
+chmod +x "$BUILD_DIR/files/etc/hostsUpdate.sh"
+chmod +x "$BUILD_DIR/files/etc/wan_check.sh"
+chmod +x "$BUILD_DIR/files/etc/openclash/core/clash_meta"
+
+        
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
 update_feeds() {
     # 删除注释行
     sed -i '/^#/d' "$BUILD_DIR/$FEEDS_CONF"
@@ -702,10 +732,12 @@ EOF
 support_fw4_adg() {
     local src_path="$BASE_PATH/patches/AdGuardHome"
     local dst_path="$BUILD_DIR/package/feeds/small8/luci-app-adguardhome/root/etc/init.d/AdGuardHome"
+    local adg_AA="https://raw.githubusercontent.com/lhbox1/luci-app-adguardhome1/refs/heads/master/root/etc/AdGuardHome/AdGuardHome.yaml"
     # 验证源路径是否文件存在且是文件，目标路径目录存在且脚本路径合法
     if [ -f "$src_path" ] && [ -d "${dst_path%/*}" ] && [ -f "$dst_path" ]; then
         # 使用 install 命令替代 cp 以确保权限和备份处理
         install -Dm 755 "$src_path" "$dst_path"
+        curl -sfL -o "$BUILD_DIR/package/feeds/small8/luci-app-adguardhome/root/etc/AdGuardHome.yaml" "$adg_AA"
         echo "已更新AdGuardHome启动脚本"
     fi
 }
@@ -980,6 +1012,7 @@ main() {
     update_feeds
     remove_unwanted_packages
     remove_tweaked_packages
+    aadiy2
     update_homeproxy
     fix_default_set
     fix_miniupnpd
@@ -1002,7 +1035,7 @@ main() {
     set_build_signature
     update_nss_diag
     update_menu_location
-    fix_compile_coremark
+   # fix_compile_coremark
     update_dnsmasq_conf
     add_backup_info_to_sysupgrade
     update_mosdns_deconfig
