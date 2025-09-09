@@ -1012,7 +1012,7 @@ main() {
     update_feeds
     remove_unwanted_packages
     remove_tweaked_packages
-    aadiy2
+    # aadiy2
     update_homeproxy
     fix_default_set
     fix_miniupnpd
