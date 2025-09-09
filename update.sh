@@ -191,12 +191,13 @@ update_golang() {
         fi
     fi
 }
-#添加自定义插件到small8
+#下载自定义插件到small8
 aadiy2() {
 
 git clone https://github.com/sbwml/luci-app-openlist2.git ./feeds/small8/luci-app-openlist2
 
 }
+####添加自定义插件到small8
 install_small8() {
     ./scripts/feeds install -p small8 -f xray-core xray-plugin dns2tcp dns2socks haproxy hysteria \
         naiveproxy shadowsocks-rust sing-box v2ray-core v2ray-geodata v2ray-geoview v2ray-plugin \
