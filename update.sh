@@ -228,6 +228,17 @@ install_feeds() {
     done
 }
 
+
+
+
+
+
+
+
+
+
+
+
 fix_default_set() {
     # 修改默认主题
     if [ -d "$BUILD_DIR/feeds/luci/collections/" ]; then
