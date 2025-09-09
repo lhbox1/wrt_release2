@@ -191,7 +191,12 @@ update_golang() {
         fi
     fi
 }
+#添加自定义插件到small8
+aadiy2() {
 
+git clone https://github.com/sbwml/luci-app-openlist2.git ./feeds/small8/luci-app-openlist2
+
+}
 install_small8() {
     ./scripts/feeds install -p small8 -f xray-core xray-plugin dns2tcp dns2socks haproxy hysteria \
         naiveproxy shadowsocks-rust sing-box v2ray-core v2ray-geodata v2ray-geoview v2ray-plugin \
@@ -200,7 +205,8 @@ install_small8() {
         luci-app-ddns-go taskd luci-lib-xterm luci-lib-taskd luci-app-store quickstart \
         luci-app-quickstart luci-app-istorex luci-app-cloudflarespeedtest netdata luci-app-netdata \
         lucky luci-app-lucky luci-app-openclash luci-app-homeproxy luci-app-amlogic nikki luci-app-nikki \
-        luci-app-momo tailscale luci-app-tailscale oaf open-app-filter luci-app-oaf easytier luci-app-easytier \
+        luci-app-openlist2 luci-app-momo \
+        tailscale luci-app-tailscale oaf open-app-filter luci-app-oaf easytier luci-app-easytier \
         msd_lite luci-app-msd_lite cups luci-app-cupsd
 }
 
@@ -227,15 +233,6 @@ install_feeds() {
         fi
     done
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1025,7 +1022,6 @@ main() {
     update_feeds
     remove_unwanted_packages
     remove_tweaked_packages
-    # aadiy2
     update_homeproxy
     fix_default_set
     fix_miniupnpd
@@ -1064,6 +1060,7 @@ main() {
     set_nginx_default_config
     update_uwsgi_limit_as
     update_argon
+    aadiy2
     install_feeds
     support_fw4_adg
     update_script_priority
