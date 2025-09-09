@@ -292,6 +292,7 @@ update_default_lan_addr() {
     local CFG_PATH="$BUILD_DIR/package/base-files/files/bin/config_generate"
     if [ -f $CFG_PATH ]; then
         sed -i 's/192\.168\.[0-9]*\.[0-9]*/'$LAN_ADDR'/g' $CFG_PATH
+        sed -i "s/hostname='.*'/hostname='AX1800PRO'/g" $CFG_PATH
     fi
 }
 
