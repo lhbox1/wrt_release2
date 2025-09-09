@@ -1,7 +1,5 @@
 #每月定时重启路由器
 11 1 1 * * sleep 5 && touch /etc/banner && reboot
-#定时释放内存
-15 3 * * * sync && echo 3 > /proc/sys/vm/drop_caches
 #每10分钟检测网络，重启WAN
 */10 * * * * /etc/wan_check.sh
 #github-host
